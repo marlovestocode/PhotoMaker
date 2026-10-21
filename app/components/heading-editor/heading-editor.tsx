@@ -1,13 +1,13 @@
 "use client";
 
-import {useState} from "react";
+import { useState } from "react";
 import { headingStyleSchema, type HeadingStyle } from "../../theme/heading-style";
 import { HeadingSection } from "../landing/HeadingSection";
 
 const DEFAULTS = headingStyleSchema.parse({});
 
 export function HeadingEditor({ initial }: { initial?: Partial<HeadingStyle> }) {
-  const [style, setStyle] = useState<HeadingStyle>({ ...DEFAULTS, ...initial });
+    const [style, setStyle] = useState<HeadingStyle>({ ...DEFAULTS, ...initial });
 
     const set = <K extends keyof HeadingStyle>(key: K, value: HeadingStyle[K]) => {
         setStyle((prev) => ({ ...prev, [key]: value }));
@@ -36,7 +36,25 @@ export function HeadingEditor({ initial }: { initial?: Partial<HeadingStyle> }) 
                 />
                 <span>{style.fontSize}px</span>
             </div>
-                    
+            <div style={row}>
+                <span style={label}>Font Weight</span>
+                <select value={style.fontWeight} onChange={(e) => set("fontWeight", e.target.value as HeadingStyle["fontWeight"])}>
+                    <option value="normal">Normal</option>
+                    <option value="bold">Bold</option>
+                </select>
+            </div>
+            <div style={row}>
+                <span style={label}>Text Align</span>
+                <select value={style.textAlign} onChange={(e) => set("textAlign", e.target.value as HeadingStyle["textAlign"])}>
+                    <option value="left">Left</option>
+                    <option value="center">Center</option>
+                    <option value="right">Right</option>
+                </select>
+            </div>
+            <div style={row}>
+                <span style={label}>Color</span>
+                <input type="color" value={style.color} onChange={(e) => set("color", e.target.value)} style={{ width: 48, height: 40 }} />
+            </div>
         </div>
     );
 }
