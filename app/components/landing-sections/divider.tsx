@@ -26,6 +26,7 @@ export function DividerSection({ style }: { style: unknown }) {
         alignItems: "center",
         gap: 16,
         color: "var(--d-color)",
+        opacity: "var(--d-opacity)",
       }}
     >
       <span style={line} />
