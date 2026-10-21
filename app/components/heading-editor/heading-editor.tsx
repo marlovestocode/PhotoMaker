@@ -55,6 +55,8 @@ export function HeadingEditor({ initial }: { initial?: Partial<HeadingStyle> }) 
                 <span style={label}>Color</span>
                 <input type="color" value={style.color} onChange={(e) => set("color", e.target.value)} style={{ width: 48, height: 40 }} />
             </div>
+
+            <button onClick={() => setStyle(DEFAULTS)} style={{ marginTop: 16 }}>Reset to Defaults</button>
         </div>
     );
 }
