@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { dividerStyleSchema, type DividerStyle } from "../../theme/section-style";
-import { DividerSection } from "../landing-sections/divider";
+import { dividerStyleSchema, type DividerStyle } from "../../theme/divider-style";
+import { DividerSection } from "./divider";
 
 const DEFAULTS = dividerStyleSchema.parse({});
 

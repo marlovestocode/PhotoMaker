@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { headingStyleSchema, type HeadingStyle } from "../../theme/heading-style";
-import { HeadingSection } from "../landing/HeadingSection";
+import { HeadingSection } from "./HeadingSection";
 
 const DEFAULTS = headingStyleSchema.parse({});
 

@@ -7,7 +7,7 @@ export const headingStyleSchema = z.object({
     fontSize: z.number().min(12).max(72).default(24),
     fontWeight: z.enum(["normal", "bold"]).default("bold"),
     textAlign: z.enum(["left", "center", "right"]).default("center"),
-    color: z.string().regex(/^#[0-9a-fA-F]{6}$/).default("#000000"),
+    color: z.string().regex(/^#[0-9a-fA-F]{6}$/).default("#FFFFFF"),
 });
 
 export type HeadingStyle = z.infer<typeof headingStyleSchema>;

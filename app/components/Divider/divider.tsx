@@ -1,4 +1,4 @@
-import { dividerStyleSchema, styleToCssVars } from "../../theme/section-style";
+import { dividerStyleSchema, styleToCssVars } from "../../theme/divider-style";
 
 const ORNAMENTS = { none: "", diamond: "◆", dots: "• • •", fleuron: "❦" };
 

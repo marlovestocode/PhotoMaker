@@ -1,5 +1,7 @@
-import { DividerSection } from "../components/landing-sections/divider";
-import { DividerEditor } from "../components/divider-editor/divider-editor";
+import { DividerSection } from "../components/Divider/divider";
+import { DividerEditor } from "../components/Divider/divider-editor";
+
+import { PRESETS, presetToDividerStyle } from "../theme/preset";
 
 export default function DividerTest() {
     return (
@@ -8,13 +10,13 @@ export default function DividerTest() {
             <DividerEditor />
 
             <p>Editable, starting Victorian</p>
-            <DividerEditor initial={{ color: "#5b2a2a", thickness: 3, ornament: "fleuron", width: 60 }} />
+            <DividerEditor initial={presetToDividerStyle(PRESETS.victorian)} />
             <p>Default (diamond)</p>
             <DividerSection style={{}} />
 
             <p>Victorian-ish</p>
             <DividerSection
-                style={{ color: "#5b2a2a", thickness: 3, ornament: "fleuron", width: 60 }}
+                style={presetToDividerStyle(PRESETS.victorian)}
             />
 
             <p>Dots, thin</p>
