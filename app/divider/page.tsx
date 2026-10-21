@@ -14,15 +14,10 @@ export default function DividerTest() {
             <p>Default (diamond)</p>
             <DividerSection style={{}} />
 
-            <p>Victorian-ish</p>
-            <DividerSection
-                style={presetToDividerStyle(PRESETS.victorian)}
-            />
-
-            <p>Dots, thin</p>
+            <p>Medieval</p>
             <DividerSection style={presetToDividerStyle(PRESETS.medieval)} />
 
-            <p>No ornament</p>
+            <p>Draconian</p>
             <DividerSection style={presetToDividerStyle(PRESETS.draconian)} />
 
             <p>Invalid data (should fall back to defaults, not crash)</p>
