@@ -36,13 +36,18 @@ export const PRESETS: Record<string, Preset> = {
 export function presetToDividerStyle(preset: Preset): Partial<DividerStyle> {
     return {
         color: preset.primaryColor,
-        ornament: preset.borderStyle === "ornate" ? "fleuron" : "none",
+        ornament: preset.borderStyle === "ornate" ? "fleuron" : preset.borderStyle === "sharp" ? "diamond" : "none",
+        thickness: preset.borderStyle === "ornate" ? 3 : 2,
+        width: preset.borderStyle === "ornate" ? 60 : 80,
+        spacing: preset.borderStyle === "ornate" ? 60 : 40,
     };
 }
 
 export function presetToHeadingStyle(preset: Preset): Partial<HeadingStyle> {
     return {
         color: preset.primaryColor,
+        fontSize: preset.fontFamily === "display" ? 36 : 24,
+        textAlign: "center",
         fontWeight: preset.fontFamily === "display" ? "bold" : "normal",
     };
 }
