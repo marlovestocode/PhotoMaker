@@ -20,10 +20,10 @@ export default function DividerTest() {
             />
 
             <p>Dots, thin</p>
-            <DividerSection style={{ color: "#444444", thickness: 1, ornament: "dots" }} />
+            <DividerSection style={presetToDividerStyle(PRESETS.medieval)} />
 
             <p>No ornament</p>
-            <DividerSection style={{ ornament: "none", color: "#2a5b4a" }} />
+            <DividerSection style={presetToDividerStyle(PRESETS.draconian)} />
 
             <p>Invalid data (should fall back to defaults, not crash)</p>
             <DividerSection style={{ color: "red", thickness: 999 }} />
