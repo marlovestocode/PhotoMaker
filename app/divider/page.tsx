@@ -1,5 +1,5 @@
-import { DividerSection } from "../../components/landing-sections/divider";
-import { DividerEditor } from "../../components/divider-editor/divider-editor";
+import { DividerSection } from "../components/landing-sections/divider";
+import { DividerEditor } from "../components/divider-editor/divider-editor";
 
 export default function DividerTest() {
     return (

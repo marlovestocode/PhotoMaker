@@ -9,8 +9,6 @@ export const dividerStyleSchema = z.object({
   spacing: z.number().min(0).max(120).default(40), // px above/below
   ornament: z.enum(["none", "diamond", "dots", "fleuron"]).default("diamond"),
 });
-
-
 export type DividerStyle = z.infer<typeof dividerStyleSchema>;
 
 export function styleToCssVars(style: DividerStyle): CSSProperties {
