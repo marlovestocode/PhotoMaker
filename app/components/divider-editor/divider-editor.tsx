@@ -30,6 +30,16 @@ export function DividerEditor({ initial }: { initial?: Partial<DividerStyle> }) 
       </div>
 
       <div style={row}>
+        <span style={label}>Opacity</span>
+        <input
+          type="range" min={0} max={1} step={0.1} value={style.opacity}
+          onChange={(e) => set("opacity", Number(e.target.value))}
+          style={{ flex: 1 }}
+        />
+        <span>{style.opacity}</span>
+      </div>
+
+      <div style={row}>
         <span style={label}>Thickness</span>
         <input
           type="range" min={1} max={8} value={style.thickness}
