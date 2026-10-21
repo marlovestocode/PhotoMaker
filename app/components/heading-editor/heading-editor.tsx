@@ -28,6 +28,15 @@ export function HeadingEditor({ initial }: { initial?: Partial<HeadingStyle> }) 
                     style={{ flex: 1 }}
                 />
             </div>
+            <div style={row}>
+                <span style={label}>Font Size</span>
+                <input type="number" min={12} max={72} value={style.fontSize}
+                    onChange={(e) => set("fontSize", Number(e.target.value))}
+                    style={{ flex: 1 }}
+                />
+                <span>{style.fontSize}px</span>
+            </div>
+                    
         </div>
     );
 }
