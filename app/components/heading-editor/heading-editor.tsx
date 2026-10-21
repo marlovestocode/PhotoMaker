@@ -19,6 +19,15 @@ export function HeadingEditor({ initial }: { initial?: Partial<HeadingStyle> }) 
     return (
         <div style={{ border: "1px solid #ccc", borderRadius: 12, padding: 16, marginBottom: 32 }}>
             <HeadingSection style={style} />
+            <div style={row}>
+                <span style={label}>Text</span>
+                <input
+                    type="text"
+                    value={style.text}
+                    onChange={(e) => set("text", e.target.value)}
+                    style={{ flex: 1 }}
+                />
+            </div>
         </div>
     );
 }
