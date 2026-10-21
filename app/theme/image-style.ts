@@ -2,7 +2,7 @@ import { z } from "zod";
 import type { CSSProperties } from "react";
 
 export const imageStyleSchema = z.object({
-    src: z.string().url().default("No image URL provided"),
+    src: z.string().url().default("https://placehold.co/600x400"),
     alt: z.string().max(100).default("Image"),
     caption: z.string().max(200).optional(),
     borderRadius: z.number().min(0).max(40).default(0), // px
