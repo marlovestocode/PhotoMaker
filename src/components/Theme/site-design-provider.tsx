@@ -42,6 +42,7 @@ export function SiteDesignProvider({ children, design }: { children: ReactNode; 
     const elementSizes = previewElementSizes ?? pageOverrides?.elementSizes ?? {};
     const responsiveElementSizes = previewResponsiveElementSizes ?? pageOverrides?.responsiveElementSizes ?? {};
     const hiddenElements = previewHiddenElements ?? pageOverrides?.hiddenElements ?? [];
+    const isDesignStudio = pathname === "/settings/design";
 
     useEffect(() => {
         document.body.style.backgroundColor = tokens.background;
@@ -372,9 +373,11 @@ export function SiteDesignProvider({ children, design }: { children: ReactNode; 
             style={designTokensToCss(tokens)}
         >
             <GalleryContentContext.Provider value={galleryContent}>
-                <style data-design-element-overrides>
-                    {designElementOverridesToCss(elementSizes, hiddenElements, responsiveElementSizes)}
-                </style>
+                {!isDesignStudio && (
+                    <style data-design-element-overrides>
+                        {designElementOverridesToCss(elementSizes, hiddenElements, responsiveElementSizes)}
+                    </style>
+                )}
                 {children}
             </GalleryContentContext.Provider>
         </div>

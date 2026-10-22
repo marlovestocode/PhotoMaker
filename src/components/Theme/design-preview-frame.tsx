@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import {
     designPreviewControlMessageSchema,
     designPreviewSelectionSchema,
@@ -11,7 +11,7 @@ import {
     type ResponsiveElementSizes,
 } from "@/theme/design-system";
 
-export function DesignPreviewFrame({
+export const DesignPreviewFrame = memo(function DesignPreviewFrame({
     path,
     tokens,
     elementSizes,
@@ -39,6 +39,7 @@ export function DesignPreviewFrame({
     const frameRef = useRef<HTMLIFrameElement>(null);
     const previewRef = useRef<HTMLDivElement>(null);
     const [availableWidth, setAvailableWidth] = useState(0);
+    const [loaded, setLoaded] = useState(false);
     const scale = Math.min(1, availableWidth / viewportWidth);
     const previewUrl = `${path}${path.includes("?") ? "&" : "?"}designPreview=1`;
 
@@ -75,6 +76,10 @@ export function DesignPreviewFrame({
     }, []);
 
     useEffect(() => {
+        setLoaded(false);
+    }, [previewUrl, reloadKey]);
+
+    useEffect(() => {
         sendPreviewSettings();
     }, [path, reloadKey, sendPreviewSettings, viewportWidth]);
 
@@ -106,15 +111,19 @@ export function DesignPreviewFrame({
 
     return (
         <div
-            className="design-preview-frame-shell mx-auto overflow-hidden rounded-xl border border-stone-300 bg-white"
+            aria-busy={!loaded}
+            className="design-preview-frame-shell studio-preview-shell"
             ref={previewRef}
             style={{ height: Math.max(0, previewHeight * scale), width: "100%" }}
         >
             {scale > 0 && (
                 <iframe
-                    className="block border-0 bg-white"
+                    className="studio-preview-frame"
                     key={`${previewUrl}:${reloadKey}`}
-                    onLoad={sendPreviewSettings}
+                    onLoad={() => {
+                        setLoaded(true);
+                        sendPreviewSettings();
+                    }}
                     ref={frameRef}
                     src={previewUrl}
                     style={{
@@ -128,6 +137,12 @@ export function DesignPreviewFrame({
                     title={`Live page preview: ${path}`}
                 />
             )}
+            {!loaded && (
+                <div aria-live="polite" className="studio-preview-loading" role="status">
+                    <span aria-hidden="true" className="studio-preview-loading__spinner" />
+                    Rendering preview
+                </div>
+            )}
         </div>
     );
-}
+});
